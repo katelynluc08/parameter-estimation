@@ -1,6 +1,7 @@
-# src/run_tests.sh
-
 #!/bin/bash
+set -e
 
-# Run the unit tests
-python3 -m unittest discover -s tests -p "test_SimplifiedThreePL.py"
+echo "Running tests for SimplifiedThreePL..."
+# Run all unit tests in the 'tests' directory
+python -m unittest discover -s tests -p "test_SimplifiedThreePL.py"
+chmod +x run_tests.sh
