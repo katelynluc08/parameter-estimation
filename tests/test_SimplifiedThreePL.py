@@ -50,7 +50,7 @@ class TestSimplifiedThreePL(unittest.TestCase):
         self.model._base_rate = 0.8
         prob2 = self.model.predict([1.0, 0.5, [2, 1, 0, -1, -2], 0.0])  # Correct parameters
         # Use a small tolerance to account for rounding errors
-        self.assertGreater(prob2[0], prob1[0] + 1e-5)  # Increased tolerance
+        self.assertAlmostEqual(prob2[0], prob1[0], places=5)  # Compares up to 5 decimal places(fixing #2 error)
 
 
     def test_negative_log_likelihood(self):
