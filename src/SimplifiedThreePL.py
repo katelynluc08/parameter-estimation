@@ -74,7 +74,7 @@ class SimplifiedThreePL:
             prob_incorrect = 1 - prob_correct
 
             # Update log-likelihood calculation to match your experiment structure
-            log_likelihood += (n_correct * np.log(prob_correct)) + (n_incorrect * np.log(prob_incorrect))
+            return -np.sum(correct_responses * np.log(probabilities) + incorrect_responses * np.log(1 - probabilities))
 
         return -log_likelihood
 
