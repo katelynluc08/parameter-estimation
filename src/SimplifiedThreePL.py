@@ -43,7 +43,8 @@ class SimplifiedThreePL:
         # Ensure that difficulties is a list or an iterable
         if isinstance(difficulties, list):
             for bi in difficulties:
-                prob = c + (1 - c) / (1 + np.exp(-a * (theta - bi)))  # Apply the subtraction to each difficulty
+                bi = np.array(bi)  # Convert difficulties to NumPy array
+                prob = c + (1 - c) / (1 + np.exp(-a * (theta - bi)))  # Element-wise subtraction(fixing error)
                 probabilities.append(prob)
         else:
             # If difficulties isn't a list, handle it as a scalar (though it should be a list in practice)
